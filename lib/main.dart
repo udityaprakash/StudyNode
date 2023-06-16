@@ -1,3 +1,4 @@
+import 'package:edumarshal/components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,12 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/firstpage',
+      initialRoute: '/splashpage',
 
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromARGB(255, 204, 229, 252),
-        textTheme: Typography().white,
+        scaffoldBackgroundColor: notchcolor,
+        // textTheme: Typography().white,
       ),
       // home: const Scaffold(
       //   body: Splashscreen(),

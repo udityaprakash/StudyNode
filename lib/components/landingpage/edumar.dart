@@ -1,63 +1,42 @@
-import 'dart:js';
 import 'dart:ui';
 
+import 'package:edumarshal/components/constants.dart';
+import 'package:edumarshal/components/designs.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class firstpage extends StatelessWidget {
   const firstpage({super.key});
-  // const width = MediaQuery.of(context).size.width / 20;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(17, 163, 196, 1),
-        // centerTitle: true,
-        title: Text(
-          'Onclasses',
-          style: TextStyle(
-              // fontFamily: 'FoodoraFont',
-              fontSize: MediaQuery.of(context).size.width / 20),
-        ),
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.sync),
-        //     iconSize: 30,
-        //     onPressed: () {
-        //       // setState(() {});
-        //     },
-        //   ),
-        // ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            // width: size.width,
-            // height: size.height,
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // svggenerator(
-                //   350,
-                //   350,
-                //   'assets/svg/logo.svg',
-                // ),
-                Text(
-                  "getin itdbdbbdabszxdfcghbjkja",
-                  style: TextStyle(
-                    // fontFamily: ,
-                    fontSize: 12,
-                    color: Colors.black,
-                    fontVariations: <FontVariation>[FontVariation('wght', 700)],
-                  ),
-                )
+  var width = MediaQuery.of(context).size.width;
+  var height = MediaQuery.of(context).size.height;
 
-                // textgenerator(
-                //     'Foodora', 60.0, 'FoodoraFont', 700, Colors.white),
+    return Scaffold(
+      body: SafeArea(
+          child: Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 20, 60, 161),
+                  bottomgrad
+                ],
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                NavText('Welcome Back', context),
+                Pagetext('Login', 300, navtextcolor, context),
+                SizedBox(height: 30),
+                InputFieldgenerator('Username', context)
               ],
             ),
-          ),
-        ),
+          )
       ),
     );
   }

@@ -11,7 +11,7 @@ class RouteGenerator {
       case '/firstpage':
         return MaterialPageRoute(builder: (_) => const firstpage());
       case '/splashpage':
-        return MaterialPageRoute(builder: (_) => const splashscreen());  
+        return MaterialPageRoute(builder: (_) => const splashpage());  
       default:
         return null;
 
