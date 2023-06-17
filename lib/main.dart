@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
-        scaffoldBackgroundColor: notchcolor,
+        scaffoldBackgroundColor: Color.fromARGB(0, 255, 255, 255),
         // textTheme: Typography().white,
       ),
       // home: const Scaffold(
