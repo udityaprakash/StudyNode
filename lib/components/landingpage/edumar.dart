@@ -33,7 +33,34 @@ class firstpage extends StatelessWidget {
                 NavText('Welcome Back', context),
                 Pagetext('Login', 300, navtextcolor, context),
                 SizedBox(height: 30),
-                InputFieldgenerator('Username', context)
+                // InputFieldgenerator('Username', context),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: 50,
+                  child: TextField(                    
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(7.0)),
+                      labelText: 'Username',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: 50,
+                  child: TextField( 
+                    obscureText: true,                   
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(7.0)),
+                      labelText: 'Password',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                ElevatedButton(onPressed: (){
+
+                }, child: Text('hrrr'))
+                // InputTxt('Username',true, context)
               ],
             ),
           )
