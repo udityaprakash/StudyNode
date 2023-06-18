@@ -58,8 +58,8 @@ class _splashpageState extends State<splashpage> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 4), () {
-      Navigator.pushReplacementNamed(context, '/firstpage');
+    Timer(const Duration(seconds: 20), () {
+      Navigator.pushReplacementNamed(context, 'firstpage');
     });
   }
 

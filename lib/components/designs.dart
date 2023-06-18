@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:edumarshal/components/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget NavText(String tex, BuildContext context) {
@@ -27,13 +29,16 @@ Widget Pagetext(String tex, double weit, Color co, BuildContext context) {
 }
 
 Widget InputFieldgenerator(String hinttxt, BuildContext context,
-    {controller, maxlines, functi, check}) {
+    {controller, maxlines, obscure, check}) {
+  bool odscure;
   return Container(
     height: MediaQuery.of(context).size.height / 20,
     width: MediaQuery.of(context).size.width * 0.7,
-    child: TextFormField(
-      // maxLines: 1,
-      autofocus: true,
+    child: TextField(
+      maxLines: 1,
+      // maxLength: 9,
+      obscureText: (obscure == null) ? false : true,
+      autofocus: false,
       controller: controller,
       onChanged: check,
       style: const TextStyle(
@@ -41,17 +46,17 @@ Widget InputFieldgenerator(String hinttxt, BuildContext context,
         fontFamily: 'Quicksand',
         fontWeight: FontWeight.w700,
       ),
-      validator: functi,
+      // validator: functi,
       decoration: InputDecoration(
           isDense: true,
-          hintText: hinttxt,
-          hintStyle: const TextStyle(
-              color: Color.fromRGBO(122, 174, 227, 1),
+          labelText: hinttxt,
+          labelStyle: TextStyle(
+              color: navtextcolor,
               fontSize: 20,
               fontFamily: 'Quicksand',
               fontWeight: FontWeight.w700),
-          fillColor: Color.fromRGBO(150, 150, 150, 0.37),
-          filled: true,
+          // fillColor: Color.fromRGBO(150, 150, 150, 0.37),
+          // filled: true,
           border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10.0)))),
     ),
@@ -101,10 +106,39 @@ Widget InputTxt(String text, bool obscure, BuildContext context, {controller}) {
   );
 }
 
-Widget btn({func, text}) {
-  return ElevatedButton(onPressed: () {
 
-  }, 
-  child: 
-  Text('hrrr'));
+
+Widget buttongenerator(String quote, BuildContext context, function) {
+  return Container(
+    width:MediaQuery.of(context).size.width * 0.6,
+    child: ElevatedButton(
+      onPressed: function,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: buttonback,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+          // side: const BorderSide(
+          //     color: Colors.white),
+        ),
+      ),
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.height / 100),
+          child: Text(
+            quote,
+            style: TextStyle(
+                letterSpacing: 2,
+                color: Colors.white,
+                fontFamily: 'Play',
+                fontVariations: <FontVariation>[FontVariation('wght', 700)],
+                fontSize: MediaQuery.of(context).size.width / 20),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget btn({func, text}) {
+  return ElevatedButton(onPressed: () {}, child: Text('hrrr'));
 }

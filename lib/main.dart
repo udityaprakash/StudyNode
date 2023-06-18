@@ -1,7 +1,8 @@
+import 'package:edumarshal/components/api/apifunctions.dart';
 import 'package:edumarshal/components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:provider/provider.dart';
 import 'Screens/route.dart';
 
 Future main() async{
@@ -14,18 +15,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/splashpage',
-
-      onGenerateRoute: RouteGenerator.generateRoute,
-      theme: ThemeData(
-        scaffoldBackgroundColor: notchcolor,
-        // textTheme: Typography().white,
+    return ChangeNotifierProvider(
+      create: (context) => ConnectivityProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: 'splashpage',
+    
+        onGenerateRoute: CustomRoute.allRoutes,
+        theme: ThemeData(
+          scaffoldBackgroundColor: notchcolor,
+          // textTheme: Typography().white,
+        ),
+        // home: const Scaffold(
+        //   body: Splashscreen(),
+        // ),
       ),
-      // home: const Scaffold(
-      //   body: Splashscreen(),
-      // ),
     );
   }
 }
