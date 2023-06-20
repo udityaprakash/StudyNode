@@ -4,6 +4,7 @@ import 'package:edumarshal/components/api/apifunctions.dart';
 import 'package:edumarshal/components/constants.dart';
 import 'package:edumarshal/components/designs.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 
 // class firstpage extends StatelessWidget {
@@ -72,15 +73,32 @@ class _firstpageState extends State<firstpage> {
                   : buttongenerator('Login', context, () async {
                       // print("has net connection : "+ hasNetwork().toString());
                       setState(() {
-                        
-                      _isloading = true;
+                        _isloading = true;
                       });
                       final response = await login_in(
                           _usernameController.text, _passController.text);
                       setState(() {
                         _isloading = false;
                       });
-                      if(response['error']==true){
+                        print("response is :"+response[0]['error'].toString());
+                      if (response[0]['error'] == true) {
+                        Fluttertoast.showToast(
+                            msg:response[0]['message'] ,
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            // backgroundColor: Color.fromARGB(206, 167, 140, 139),
+                            // textColor: Colors.yellow
+                            );
+                      }else{
+                        Fluttertoast.showToast(
+                            msg: 'Welcome',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            // backgroundColor: Color.fromARGB(206, 167, 140, 139),
+                            // textColor: Colors.yellow
+                            );
 
                       }
 
