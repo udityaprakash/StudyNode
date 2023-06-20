@@ -23,7 +23,7 @@ class firstpage extends StatefulWidget {
 
 class _firstpageState extends State<firstpage> {
   bool _isloading = false;
-  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _usernameController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
   // bool isOnline = await hasNetwork();
   @override
@@ -54,21 +54,38 @@ class _firstpageState extends State<firstpage> {
               SizedBox(
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: 50,
-                  child: InputFieldgenerator('Username', context)),
+                  child: InputFieldgenerator('Username', context,
+                      controller: _usernameController)),
               SizedBox(
                 height: 20,
               ),
               SizedBox(
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: 50,
-                  child:
-                      InputFieldgenerator('Password', context, obscure: true)),
+                  child: InputFieldgenerator('Password', context,
+                      obscure: true, controller: _passController)),
               SizedBox(
                 height: 20,
               ),
-              buttongenerator('Login', context, () async {
-                // print("has net connection : "+ hasNetwork().toString());
-              })
+              _isloading
+                  ? CircularProgressIndicator()
+                  : buttongenerator('Login', context, () async {
+                      // print("has net connection : "+ hasNetwork().toString());
+                      setState(() {
+                        
+                      _isloading = true;
+                      });
+                      final response = await login_in(
+                          _usernameController.text, _passController.text);
+                      setState(() {
+                        _isloading = false;
+                      });
+                      if(response['error']==true){
+
+                      }
+
+                      // getLoginData(username:_usernameController,password: _passController);
+                    })
             ],
           ),
         ),

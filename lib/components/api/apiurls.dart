@@ -1,3 +1,3 @@
-final homeurl = "https://api.naveenrao.com/akgec/api.php?";
+final homeurl = "https://api.naveenrao.com/akgec/api.php?apicall=getToken";
 
-final query = "apicall=";
+final query = "apicall=getToken";
