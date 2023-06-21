@@ -19,6 +19,7 @@ class _firstpageState extends State<firstpage> {
   bool _isloading = false;
   TextEditingController _usernameController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
+   bool _passwordVisible = true;
   // bool isOnline = await hasNetwork();
   @override
   @override
@@ -58,8 +59,15 @@ class _firstpageState extends State<firstpage> {
             SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: 50,
-                child: InputFieldgenerator('Password', context,
-                    obscure: true, controller: _passController)),
+                child: Inputpassfield('Password', _passwordVisible, context, () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                          )
+                          ),
+                // InputFieldgenerator('Password', context,
+                //     obscure: true, controller: _passController)),
             SizedBox(
               height: 20,
             ),

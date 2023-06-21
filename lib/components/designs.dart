@@ -44,47 +44,83 @@ Widget InputFieldgenerator(String hinttxt, BuildContext context,
       onChanged: check,
       style: const TextStyle(
         fontSize: 20,
-        fontFamily: 'Quicksand',
+        fontFamily: 'Play',
         fontWeight: FontWeight.w700,
       ),
-      // validator: functi,
-      decoration: InputDecoration(
+      decoration:fielddesign(hinttxt)
+    ),
+  );
+}
+
+InputDecoration fielddesign(text){
+  return InputDecoration(
           isDense: true,
-          labelText: hinttxt,
+          labelText: text,
           labelStyle: TextStyle(
               color: navtextcolor,
               fontSize: 20,
-              fontFamily: 'Quicksand',
+              fontFamily: 'Play',
               fontWeight: FontWeight.w700),
-          // fillColor: Color.fromRGBO(150, 150, 150, 0.37),
-          // filled: true,
           border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)))),
+              borderRadius: BorderRadius.all(Radius.circular(10.0))));
+}
+
+Widget Inputpassfield(String hinttxt, bool _passwordVisible, context, funct,
+    {controller}) {
+  return SizedBox(
+    height: MediaQuery.of(context).size.height / 15,
+    child: TextField(
+      maxLines: 1,
+      controller: controller,
+      style: const TextStyle(
+        fontSize: 20,
+        fontFamily: 'Play',
+        fontWeight: FontWeight.w700,
+      ),
+      obscureText: _passwordVisible,
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+          icon: Icon(
+            _passwordVisible ? Icons.visibility_off : Icons.visibility,
+            color: Theme.of(context).primaryColorDark,
+          ),
+          onPressed: funct,
+        ),
+        // hintText: hinttxt,
+        labelText: hinttxt,
+        labelStyle: TextStyle(
+              color: navtextcolor,
+              fontSize: 20,
+              fontFamily: 'Play',
+              fontWeight: FontWeight.w700),
+        filled: true,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        ),
+      ),
     ),
   );
 }
 
-Widget InputTxt(String text, bool obscure, BuildContext context, {controller}) {
-  return TextField(
-    controller: controller,
-    obscureText: obscure,
-    decoration: InputDecoration(
-      prefixIcon: Icon(Icons.account_circle),
-      hintText: text,
-      // icon: Icon(Icons.account_circle,color: Color.fromARGB(255, 30, 111, 233)),
-      // hintText: 'Hint Text',
-      helperText: 'Helper Text',
-      counterText: '0 characters',
-      border: OutlineInputBorder(
-          // borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
-          borderRadius: BorderRadius.circular(30.0)),
-    ),
+// Widget InputTxt(String text, bool obscure, BuildContext context, {controller}) {
+//   return TextField(
+//     controller: controller,
+//     obscureText: obscure,
+//     decoration: InputDecoration(
+//       prefixIcon: Icon(Icons.account_circle),
+//       hintText: text,
+//       helperText: 'Helper Text',
+//       counterText: '0 characters',
+//       border: OutlineInputBorder(
+//           // borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+//           borderRadius: BorderRadius.circular(30.0)),
+//     ),
 
-    onChanged: (value) {
-      value = text;
-    },
-  );
-}
+//     onChanged: (value) {
+//       value = text;
+//     },
+//   );
+// }
 
 
 
@@ -117,10 +153,6 @@ Widget buttongenerator(String quote, BuildContext context, function) {
       ),
     ),
   );
-}
-
-Widget btn({func, text}) {
-  return ElevatedButton(onPressed: () {}, child: Text('hrrr'));
 }
 
 void Toastmsg({msg}){
