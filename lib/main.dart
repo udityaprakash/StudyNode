@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
     
         onGenerateRoute: CustomRoute.allRoutes,
         theme: ThemeData(
-          scaffoldBackgroundColor: notchcolor,
-          // textTheme: Typography().white,
+          scaffoldBackgroundColor: Colors.black,
+          textTheme: Typography().white,
         ),
         // home: const Scaffold(
         //   body: Splashscreen(),

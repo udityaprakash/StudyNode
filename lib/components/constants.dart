@@ -8,4 +8,4 @@ final Color notchcolor = Color.fromARGB(255, 20, 60, 161);
 
 final Color topgrad = Color.fromARGB(255, 20, 60, 161);
 
-final Color bottomgrad = Color.fromARGB(255, 25, 74, 196);
+final Color bottomgrad = Color.fromARGB(255, 74, 108, 194);

@@ -54,19 +54,6 @@ dynamic login_in(String username, String password) async {
     http.Response response = await http.post(Uri.parse(uri), body: json);
 
     var jsonResponse = jsonDecode(response.body);
-    // print(jsonResponse);
-    // final response = await http.post(Uri.https('api.naveenrao.com','/akgec/api.php',{ 'apicall':'getToken'}),
-    //     headers: <String, String>{
-    //       'Content-Type': 'application/json; charset=UTF-8',
-    //     },
-
-    //     body: jsonEncode(<String, String>{
-    //       "username": username,
-    //       "password": password,
-    //     })
-    //     );
-
-    // final result = jsonDecode(jsonresponse.body);
     if (jsonResponse != null) {
       print("Response Recieved is: " + jsonResponse.toString());
     }

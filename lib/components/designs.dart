@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:edumarshal/components/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Widget NavText(String tex, BuildContext context) {
   return Text(
@@ -29,7 +30,7 @@ Widget Pagetext(String tex, double weit, Color co, BuildContext context) {
 }
 
 Widget InputFieldgenerator(String hinttxt, BuildContext context,
-    {controller, maxlines, obscure, check}) {
+    {controller, maxlines, obscure, check,Function}) {
   bool odscure;
   return Container(
     height: MediaQuery.of(context).size.height / 20,
@@ -82,27 +83,6 @@ Widget InputTxt(String text, bool obscure, BuildContext context, {controller}) {
     onChanged: (value) {
       value = text;
     },
-    // obscureText: true,
-    // onSubmitted: (String value) async {
-    //   await showDialog<void>(
-    //     context: context,
-    //     builder: (BuildContext context) {
-    //       return AlertDialog(
-    //         title: const Text('Thanks!'),
-    //         content: Text(
-    //             'You typed "$value", which has length ${value.characters.length}.'),
-    //         actions: <Widget>[
-    //           TextButton(
-    //             onPressed: () {
-    //               Navigator.pop(context);
-    //             },
-    //             child: const Text('OK'),
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //   );
-    // },
   );
 }
 
@@ -141,4 +121,15 @@ Widget buttongenerator(String quote, BuildContext context, function) {
 
 Widget btn({func, text}) {
   return ElevatedButton(onPressed: () {}, child: Text('hrrr'));
+}
+
+void Toastmsg({msg}){
+  Fluttertoast.showToast(
+          msg:msg,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          // backgroundColor: Color.fromARGB(206, 167, 140, 139),
+          // textColor: Colors.yellow
+  );
 }
