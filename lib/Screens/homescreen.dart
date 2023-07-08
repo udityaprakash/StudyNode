@@ -31,15 +31,13 @@ class _homeState extends State<home> {
             icon: const Icon(Icons.logout),
             iconSize: 30,
             onPressed: () async {
-              await storage.deleteAll();
-
-              final ar = await user();
-
-              if (ar != null) {
-                Toastmsg(msg: 'Logout Was Failed');
-              }else{
+              try{
+                await storage.deleteAll();
                 Navigator.pushReplacementNamed(context, 'firstpage');
-                setState(() {});
+
+                }catch(e){
+
+                Toastmsg(msg: 'Logout Was Failed');
               }
             },
           ),

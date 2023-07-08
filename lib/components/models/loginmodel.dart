@@ -41,20 +41,20 @@ class MyUserModel {
       // required this.userId,
       });
 
-  factory MyUserModel.fromJson(Map<String, dynamic> jsonData) => MyUserModel(
-        access_token: jsonData['access_token'],
-        tokentype: jsonData['token_type'],
-        expires_in: jsonData['expires_in'],
-        X_ContextId: jsonData['X-ContextId'],
-        X_UserId: jsonData['X-UserId'],
-        X_LogoId: jsonData['X-LogoId'],
-        X_RX: jsonData['X-RX'],
-        PChangeSetting: jsonData['PChangeSetting'],
-        PChangeStatus: jsonData['PChangeStatus'],
-        SessionId: jsonData['SessionId'],
-        X_Token: jsonData['X_Token'],
-        issued: jsonData['.issued'],
-        expires: jsonData['.expires'],
+  factory MyUserModel.fromJson(Map<String, dynamic> json) => MyUserModel(
+        access_token: json['access_token'],
+        tokentype: json['token_type'],
+        expires_in: json['expires_in'],
+        X_ContextId: json['X-ContextId'],
+        X_UserId: json['X-UserId'],
+        X_LogoId: json['X-LogoId'],
+        X_RX: json['X-RX'],
+        PChangeSetting: json['PChangeSetting'],
+        PChangeStatus: json['PChangeStatus'],
+        SessionId: json['SessionId'],
+        X_Token: json['X_Token'],
+        issued: json['.issued'],
+        expires: json['.expires'],
       );
 
   static Map<String, dynamic> toMap(MyUserModel model) => 

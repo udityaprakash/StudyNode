@@ -27,7 +27,6 @@ class _firstpageState extends State<firstpage> {
   bool _passwordVisible = true;
   // bool isOnline = await hasNetwork();
   @override
-  @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -94,12 +93,11 @@ class _firstpageState extends State<firstpage> {
                                 Toastmsg(msg: response[0]['message']);
                               } else {
                                 Toastmsg(msg: 'Welcome');
-                                print("encoded :" +
-                                    jsonEncode(response[0]['data']));
                                 final da = response[0]['data'];
                                 await storage.write(
                                     key: 'UserInfo',
-                                    value: MyUserModel.serialize(da));
+                                    value: MyUserModel.serialize(
+                                        MyUserModel.fromJson(da)));
 
                                 MyUserModel saveduser = MyUserModel.deserialize(
                                     await storage.read(key: 'UserInfo') ??

@@ -72,10 +72,10 @@ Future<MyUserModel?> user() async {
   try {
     final storage = new FlutterSecureStorage();
     // final user = await storage.read(key: 'UserInfo');
-    MyUserModel user =
-        MyUserModel.deserialize(await storage.read(key: 'UserInfo') ?? 'null');
-    if (user.access_token != 'null') {
-      return user;
+    if (await storage.containsKey(key: 'UserInfo')) {
+      return MyUserModel.deserialize((await storage.read(key: 'UserInfo'))!);
+    } else {
+      return null;
     }
   } catch (er) {
     log(er.toString());
