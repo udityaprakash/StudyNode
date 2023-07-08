@@ -12,8 +12,8 @@ class MyUserModel {
   bool? PChangeStatus;
   String? SessionId;
   String? X_Token;
-  dynamic issued;
-  dynamic expires;
+  String? issued;
+  String? expires;
 
   // dynamic email;
   // bool isContact;

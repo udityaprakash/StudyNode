@@ -1,11 +1,12 @@
+import 'package:edumarshal/Screens/homescreen.dart';
 import 'package:edumarshal/components/designs.dart';
 import 'package:edumarshal/components/landingpage/edumar.dart';
+import 'package:edumarshal/components/landingpage/homepageredirector.dart';
 import 'package:edumarshal/components/splaashpage/splashpage.dart';
 import 'package:provider/provider.dart';
 import '../components/api/apifunctions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 import 'package:flutter/material.dart';
 // import 'package:nb_utils/nb_utils.dart';
@@ -40,9 +41,15 @@ class CustomRoute {
         case "firstpage":
           // ignore: prefer_const_constructors
           return firstpage();
+        case "homepageredirector":
+          // ignore: prefer_const_constructors
+          return home_page_redirector();
         case "splashpage":
           // ignore: prefer_const_constructors
           return splashpage();
+        case "home":
+          // ignore: prefer_const_constructors
+          return home();  
       }
 
       // ignore: prefer_const_constructors
@@ -72,21 +79,23 @@ class NoConnectionScreen extends StatefulWidget {
 class _NoConnectionScreenState extends State<NoConnectionScreen> {
   @override
   @override
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
-            Image.asset('assets/images/error.png', fit: BoxFit.cover, height: double.infinity),
+            Image.asset('assets/images/error.png',
+                fit: BoxFit.cover, height: double.infinity),
             Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   NavText('No Internet', context),
-                  SizedBox(height: MediaQuery.of(context).size.height/6,)
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 6,
+                  )
                 ],
               ),
             ),

@@ -60,7 +60,7 @@ class _splashpageState extends State<splashpage> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, 'firstpage');
+      Navigator.pushReplacementNamed(context, 'homepageredirector');
     });
   }
 
