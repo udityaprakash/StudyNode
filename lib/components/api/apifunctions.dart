@@ -56,6 +56,9 @@ dynamic login_in(String username, String password) async {
     var jsonResponse = jsonDecode(response.body);
     if (jsonResponse != null) {
       print("Response Recieved is: " + jsonResponse.toString());
+    }else{
+      print("Response Not Recived while login time");
+
     }
     return jsonResponse;
   } catch (err) {

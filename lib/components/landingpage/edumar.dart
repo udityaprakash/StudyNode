@@ -1,11 +1,15 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:edumarshal/components/api/apifunctions.dart';
 import 'package:edumarshal/components/constants.dart';
 import 'package:edumarshal/components/designs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
+
+import '../models/loginmodel.dart';
 
 
 class firstpage extends StatefulWidget {
@@ -17,6 +21,7 @@ class firstpage extends StatefulWidget {
 
 class _firstpageState extends State<firstpage> {
   bool _isloading = false;
+  final FlutterSecureStorage storage = FlutterSecureStorage();
   TextEditingController _usernameController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
    bool _passwordVisible = true;
@@ -64,6 +69,7 @@ class _firstpageState extends State<firstpage> {
                               _passwordVisible = !_passwordVisible;
                             });
                           },
+                          controller: _passController
                           )
                           ),
                 // InputFieldgenerator('Password', context,
@@ -86,7 +92,19 @@ class _firstpageState extends State<firstpage> {
                     if (response[0]['error'] == true) {
                       Toastmsg(msg: response[0]['message']);
                     } else {
-                      Toastmsg(msg: 'Welcome');
+                      Toastmsg(msg: 'Welcome');                     
+
+                      await storage.write(key: 'UserInfo', value: MyUserModel.serialize(response[0]['data']));
+
+                      MyUserModel saveduser = MyUserModel.deserialize(await storage.read(key: 'UserInfo') ?? 'null');
+                      if(saveduser!='null'){
+                        if(saveduser.access_token!=null){
+                          
+                        }
+
+                      }else{
+                          Toastmsg(msg: 'User was not saved into device');
+                      }
                     }
                   })
           ],
