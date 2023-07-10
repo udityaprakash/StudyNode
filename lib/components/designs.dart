@@ -165,3 +165,15 @@ void Toastmsg({msg}){
           // textColor: Colors.yellow
   );
 }
+
+void Toasterrmsg({msg}){
+  Fluttertoast.showToast(
+          msg:msg,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: errorbgtoastmsg,
+          // textColor: Colors.yellow
+  );
+}
+

@@ -78,43 +78,67 @@ class _firstpageState extends State<firstpage> {
                       _isloading
                           ? CircularProgressIndicator()
                           : buttongenerator('Login', context, () async {
-                              setState(() {
-                                _isloading = true;
-                              });
-                              final response = await login_in(
-                                  _usernameController.text,
-                                  _passController.text);
-                              setState(() {
-                                _isloading = false;
-                              });
-                              // print("response is :" +
-                              //     response[0]['error'].toString());
-                              if (response[0]['error'] == true) {
-                                Toastmsg(msg: response[0]['message']);
-                              } else {
-                                Toastmsg(msg: 'Welcome');
-                                final da = response[0]['data'];
-                                await storage.write(
-                                    key: 'UserInfo',
-                                    value: MyUserModel.serialize(
-                                        MyUserModel.fromJson(da)));
+                              if (_usernameController.text != '') {
+                                if (_passController.text != '') {
+                                  try{
+                                  setState(() {
+                                    _isloading = true;
+                                  });
+                                  final response = await login_in(
+                                      _usernameController.text,
+                                      _passController.text);
+                                  // print("response is :" +
+                                  //     response[0]['error'].toString());
+                                  if (response[0]['error'] == true) {
+                                    setState(() {
+                                    _isloading = false;
+                                  });
+                                    Toasterrmsg(msg: response[0]['message']);
+                                  } else {
+                                    Toastmsg(msg: 'Welcome');
+                                    final da = response[0]['data'];
+                                    await storage.write(
+                                        key: 'UserInfo',
+                                        value: MyUserModel.serialize(
+                                            MyUserModel.fromJson(da)));
 
-                                MyUserModel saveduser = MyUserModel.deserialize(
-                                    await storage.read(key: 'UserInfo') ??
-                                        'null');
-                                print("print here the access token " +
-                                    saveduser.access_token.toString());
-                                final stor = await user();
-                                // log(stor.toString());
-                                if (stor != null) {
-                                  Navigator.pushReplacementNamed(
-                                      context, 'home');
-                                  // if (saveduser.access_token != null) {
-                                  // }
+                                    MyUserModel saveduser =
+                                        MyUserModel.deserialize(await storage
+                                                .read(key: 'UserInfo') ??
+                                            'null');
+                                    print("print here the access token " +
+                                        saveduser.access_token.toString());
+                                    final stor = await user();
+                                    // log(stor.toString());
+                                    if (stor != null) {
+                                      Navigator.pushReplacementNamed(
+                                          context, 'home');
+                                      // if (saveduser.access_token != null) {
+                                      // }
+                                    } else {
+                                      setState(() {
+                                    _isloading = false;
+                                  });
+                                      Toastmsg(
+                                          msg:
+                                              'User was not saved into device');
+                                    }
+                                  }
+
+                                  }catch(err){
+                                    Toastmsg(msg: 'something went wrong');
+                                  }
                                 } else {
-                                  Toastmsg(
-                                      msg: 'User was not saved into device');
+                                  setState(() {
+                                    _isloading = false;
+                                  });
+                                  Toasterrmsg(msg: 'Password cannot be Blank');
                                 }
+                              }else{
+                                  setState(() {
+                                    _isloading = false;
+                                  });
+                                  Toasterrmsg(msg: 'Username cannot be Blank');
                               }
                             })
                     ],

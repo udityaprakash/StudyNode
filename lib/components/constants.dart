@@ -9,3 +9,5 @@ final Color notchcolor = Color.fromARGB(255, 20, 60, 161);
 final Color topgrad = Color.fromARGB(255, 20, 60, 161);
 
 final Color bottomgrad = Color.fromARGB(255, 74, 108, 194);
+
+final Color errorbgtoastmsg = Color.fromARGB(255, 243, 90, 63);
