@@ -22,10 +22,16 @@ class MyApp extends StatelessWidget {
         initialRoute: 'splashpage',
     
         onGenerateRoute: CustomRoute.allRoutes,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.black,
+        theme:
+        // ThemeData.light(),
+         ThemeData(
+          scaffoldBackgroundColor: themeclr,
           textTheme: Typography().white,
         ),
+        // darkTheme: ThemeData.dark(
+        //   // useMaterial3: true,
+
+        // ),
         // home: const Scaffold(
         //   body: Splashscreen(),
         // ),

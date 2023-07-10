@@ -49,7 +49,7 @@ dynamic login_in(String username, String password) async {
   try {
     print("Attempting login :");
 
-    String uri = homeurl;
+    String uri = homeurl+query;
 
     final json = {"username": username, "password": password};
 
