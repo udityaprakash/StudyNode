@@ -39,6 +39,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.0.0
   fluttertoast: ^8.2.2
+  cached_network_image: ^3.2.3
   flutter_secure_storage: ^8.0.0
   # nb_utils: ^4.4.7
 
@@ -47,10 +48,10 @@ flutter_native_splash:
   ios: true
   web: false
   # background_image: "assets/background.png"
-  color: "#faf682"
-  image: assets/images/unnamed.png
+  color: "#1de9b6"
+  image: assets/images/unnamednew.png
   android_12:
-    image: assets/images/unnamed.png
+    image: assets/images/unnamednew.png
     icon_background_color: "#ffffff"
   # android_gravity: center 
 
@@ -106,6 +107,11 @@ flutter:
         - asset: lib/fonts/Play.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+    - family : Lato
+      fonts:
+      - asset: lib/fonts/Lato-Regular.ttf
+      - asset: lib/fonts/Lato-Light.ttf
+        weight: 300
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
